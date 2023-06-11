@@ -5,8 +5,8 @@ import { useState } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const [amount, setAmount] = useState<number>(30);
-  const [time, setTime] = useState<number>(1);
+  const [amount, setAmount] = useState<number>(250000);
+  const [time, setTime] = useState<number>(6);
 
   const handleAmount = (event: Event, newValue: number | number[]) => {
     setAmount(newValue as number);
@@ -54,8 +54,8 @@ export default function Home() {
           value={amount}
           onChange={handleAmount}
           defaultValue={50}
-          min={0}
-          max={100}
+          min={250000}
+          max={25000000}
           aria-label="Amount"
         />
         <Box
@@ -71,7 +71,7 @@ export default function Home() {
           <p
             style={{ fontSize: "1.5rem", fontWeight: "600", lineHeight: "1.2" }}
           >
-            {time} {time < 2 ? "month" : "months"}
+            {time} months
           </p>
         </Box>
         <Slider
@@ -80,14 +80,14 @@ export default function Home() {
           value={time}
           onChange={handleTime}
           defaultValue={6}
-          min={1}
-          max={12}
+          min={6}
+          max={18}
           aria-label="Time"
           sx={{ marginBottom: 4 }}
         />
 
         <p style={{ fontSize: "1.5rem", fontWeight: "600", lineHeight: "1.2" }}>
-          Available amount: {amount + amount * ((time * 0.9) / 100)}
+          Interest: {amount + (1 * time * amount) / 100}%
         </p>
       </Box>
     </main>
