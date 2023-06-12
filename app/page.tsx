@@ -90,7 +90,11 @@ export default function Home() {
         />
 
         <p style={{ fontSize: "1.5rem", fontWeight: "600", lineHeight: "1.2" }}>
-          Interest: {amount + amount * ((time * 1) / 100)}%
+          Total:{" "}
+          {new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(amount + amount * ((time * 1) / 100))}
         </p>
       </Box>
     </main>
